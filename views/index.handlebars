@@ -14,7 +14,15 @@
 
 <div class = "devoured">
   <h2> Burgers that have been devoured:</h2>
-   
-   
-
+   <ul>
+   {{#each burgers}}
+   <li>{{this.burger_name}}</li>
+   {{/each}}
 </div>
+
+<div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Burger Name" aria-label="Burger Name" id="burgerName">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-success" type="button" id="addBurger">Add</button>
