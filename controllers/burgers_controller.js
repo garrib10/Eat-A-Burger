@@ -13,7 +13,7 @@ router.get("/", function (req, res) {
     });
 });
 //Create a New Burger//
-router.post("api/burgers", function (req, res) {
+router.post("/burgers", function (req, res) {
     burger.create(req.body.burger_name, function (res) {
         console.log(res)
         res.redirect("/")
@@ -21,7 +21,7 @@ router.post("api/burgers", function (req, res) {
 });
 
 // add update one function for router// 
-router.put("api/burgers/:id", function (req, res) {
+router.put("/burgers/:id", function (req, res) {
     burger.update(req.params.id, function (res) {
         res.redirect("/");
     });
