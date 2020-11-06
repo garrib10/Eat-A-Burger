@@ -1,17 +1,18 @@
-<h1>Welcome to Eat-A-Burger</h1> 
-
+<div class="container">
+  <div class="row" id="top-bar">
+    <div class="col-xs-12 text-center">
+      <h1>Eat A Burger</h1>
+    </div>
+</div>
+    <div class="row">
+      <div class="col">
 <div class = "burgers">
     <h2> Burgers that are ready to be devoured:</h2>
 
 <ul>
     {{#each burgers}}
     {{#unless this.devoured}}
-    
-     <div>
-              <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
-                <button type="submit" class='notdevoured'> {{this.burger_name}}</button>
-              </form>
-            </div>
+   <li>{{this.burger_name}}</li>   
     {{/unless}}
     {{/each}}
 </ul>
