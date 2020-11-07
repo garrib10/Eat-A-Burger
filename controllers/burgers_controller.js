@@ -7,18 +7,18 @@ router.get("/", function (req, res) {
     burger.selectAll(function (data) {
         console.log(data)
 
-        const hbsObject = {
+        const burgerObj = {
             burgers: data
         }
-        console.log(hbsObject);
-        res.render("index", hbsObject)
+        console.log(burgerObj);
+        res.render("index", burgerObj)
     });
 });
 //Create a New Burger//
-router.post("/api/burger", function (req, res) {
+router.post("/api/burgers", function (req, res) {
     burger.insertOne(["burger_name"], [req.body.burger_name], function (result) {
         console.log(result);
-      res.status(200).end();
+        res.redirect("/")
     });
 });
 
