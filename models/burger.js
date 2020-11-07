@@ -17,12 +17,6 @@ var burger = {
       cb(res);
     });
   },
-
- deleteOne:function (cols,vals, cb){
-   orm.deleteOne("burgers", cols,vals, function(res){
-     cb(res);
-   });
-  }
 };
  
 
