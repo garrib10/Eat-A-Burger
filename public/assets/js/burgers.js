@@ -1,20 +1,22 @@
 // UPDATE Cats Example to work with Eat A Burger//
 $(function() {
-    $(".change-sleep").on("click", function(event) {
+    $(".change-status").on("click", function(event) {
       var id = $(this).data("id");
-      var newSleep = $(this).data("newsleep");
+      
   
-      var newSleepState = {
-        sleepy: newSleep
-      };
+      var devourState = {
+        devoured: 1
+      }
+        
+    
   
       // Send the PUT request.
-      $.ajax("/api/cats/" + id, {
+      $.ajax("/api/burger/" + id, {
         type: "PUT",
-        data: newSleepState
+        data: devourState
       }).then(
         function() {
-          console.log("changed sleep to", newSleep);
+          console.log("A Burger has been devoured");
           // Reload the page to get the updated list
           location.reload();
         }
@@ -25,22 +27,38 @@ $(function() {
       // Make sure to preventDefault on a submit event.
       event.preventDefault();
   
-      var newCat = {
-        name: $("#ca").val().trim(),
-        sleepy: $("[name=sleepy]:checked").val().trim()
+      var burger = {
+        name: $("#bur").val().trim(),
       };
   
       // Send the POST request.
-      $.ajax("/api/cats", {
+      $.ajax("/api/burger", {
         type: "POST",
-        data: newCat
+        data: burger
       }).then(
         function() {
-          console.log("created new cat");
+          console.log("created new burger");
           // Reload the page to get the updated list
           location.reload();
         }
       );
     });
   });
+
+  $(".delete-burger").on("click", function(event) {
+    var id = $(this).data("id");
+
+    // Send the DELETE request.
+    $.ajax("/api/burger/" + id, {
+      type: "DELETE"
+    }).then(
+      function() {
+        console.log("deleted burger", id);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+
   
