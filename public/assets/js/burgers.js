@@ -1,64 +1,37 @@
 
-$(function() {
-    $(".change-status").on("click", function(event) {
-      var id = $(this).data("id");
-      
-  
-      var devourState = {
-        devoured: 1
-      }
-        
-    
-  
-      // Send the PUT request.
-      $.ajax("/api/burger/" + id, {
-        type: "PUT",
-        data: devourState
-      }).then(
-        function() {
-          console.log("A burger has been devoured");
-          // Reload the page to get the updated list
-          location.reload();
-        }
-      );
-    });
-  
-    $(".create-form").on("submit", function(event) {
-      // Make sure to preventDefault on a submit event.
+$(document).ready(function(){
+
+  $("#submitBtn").on("click", function(event) {
       event.preventDefault();
-  
-      var burger = {
-        name: $("#bur").val().trim(),
+
+      var newBurger = {
+        burger_name: $("#burger").val().trim(),
       };
   
-      // Send the POST request.
-      $.ajax("/api/burger", {
+      $.ajax("/api/burgers", {
         type: "POST",
-        data: burger
+        data: newBurger
       }).then(
         function() {
           console.log("created new burger");
-          // Reload the page to get the updated list
           location.reload();
         }
       );
-    });
   });
 
-  $(".delete-burger").on("click", function(event) {
-    var id = $(this).data("id");
+  $(".devourBtn").on("click", function(event) {
+      event.preventDefault();
 
-    // Send the DELETE request.
-    $.ajax("/api/burger/" + id, {
-      type: "DELETE"
-    }).then(
-      function() {
-        console.log("deleted burger", id);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-
-
+      var id = $(this).data("id");
   
+      $.ajax("/api/burgers/" + id, {
+        type: "PUT",
+      }).then(
+        function() {
+          console.log("Updated burger name");
+          location.reload();
+        }
+      );
+  });
+
+});
