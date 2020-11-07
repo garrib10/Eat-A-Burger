@@ -1,4 +1,4 @@
-// UPDATE Cats Example to work with Eat A Burger//
+
 $(function() {
     $(".change-status").on("click", function(event) {
       var id = $(this).data("id");

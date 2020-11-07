@@ -1,7 +1,8 @@
 const express = require("express");
-const burger = require("../models/burger");
+const burger = require("../models/burger.js");
 const router = require("express").Router();
 
+;
 router.get("/", function (req, res) {
     burger.selectAll(function (data) {
         console.log(data)
@@ -26,9 +27,7 @@ router.post("/api/burger", function (req, res) {
 router.put("api/burger/:id", function (req, res) {
     var condition = "id = " + req.params.id;
     console.log("condition", condition);
-
-
-    burger.updateOne({
+    burger.update({
         devoured: req.body.devoured
     },
         condition, function (result) {
@@ -42,10 +41,10 @@ router.put("api/burger/:id", function (req, res) {
 });
 // Added delete function  for router// 
 router.delete("/api/burger/:id", function (req, res) {
-    var condition = "id = " + req.params.id; 
+    var condition = "id = " + req.params.id;
 
-    burger.delete (condition, function (result) {
-        if (result.affectedRows == 0){
+    burger.delete(condition, function (result) {
+        if (result.affectedRows == 0) {
             return res.status(404).end();
         } else {
             res.status(200).end();
