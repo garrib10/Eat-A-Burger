@@ -27,7 +27,8 @@ router.put("api/burger/:id", function (req, res) {
     var condition = "id = " + req.params.id;
     console.log("condition", condition);
 
-    burger.update({
+
+    burger.updateOne({
         devoured: req.body.devoured
     },
         condition, function (result) {
@@ -39,7 +40,7 @@ router.put("api/burger/:id", function (req, res) {
         });
 
 });
-
+// Added delete function  for router// 
 router.delete("/api/burger/:id", function (req, res) {
     var condition = "id = " + req.params.id; 
 
