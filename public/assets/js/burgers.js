@@ -16,7 +16,7 @@ $(function() {
         data: devourState
       }).then(
         function() {
-          console.log("A Burger has been devoured");
+          console.log("A burger has been devoured");
           // Reload the page to get the updated list
           location.reload();
         }
