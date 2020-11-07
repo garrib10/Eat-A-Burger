@@ -43,53 +43,26 @@ var orm = {
     },
 
 
-    insertOne: function (table, cols, vals, cb) {
-        var queryString = "INSERT INTO" + table; var queryString = "INSERT INTO " + table;
-
-        queryString += " (";
-        queryString += cols.toString();
-        queryString += ") ";
-        queryString += "VALUES (";
-        queryString += printQuestionMarks(vals.length);
-        queryString += ") ";
-
-        console.log(queryString);
-
-        connection.query(queryString, vals, function (err, result) {
-            if (err) {
-                throw err;
-            }
-
+    insertOne: function (table, columns, values, cb) {
+         var queryString = "INSERT INTO ?? (??) VALUES (?);"
+        connection.query(queryString, [table, columns, values], function(err, result){
+            if (err) throw err;
             cb(result);
         });
     },
-
 
     updateOne: function (table, columns, value, cb) {
         var queryString = "UPDATE ?? SET ? WHERE ?";
 
         console.log(queryString);
         connection.query(queryString, [table, columns, value], function (err, result) {
-            if (err) {
-                throw err;
-            }
-
+            if (err) throw err;
             cb(result);
+
         });
     },
-    delete: function (table, condition, cb) {
-        var queryString = "DELETE FROM " + table;
-        queryString += " WHERE ";
-        queryString += condition;
-
-        connection.query(queryString, function (err, result) {
-            if (err) {
-                throw err;
-            }
-
-            cb(result);
-        });
-    }
+            
+    
 };
 
 module.exports = orm;

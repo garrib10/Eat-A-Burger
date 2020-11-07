@@ -16,10 +16,9 @@ router.get("/", function (req, res) {
 });
 //Create a New Burger//
 router.post("/api/burger", function (req, res) {
-    burger.insertOne(["burger_name"], [req.body.name], function (result) {
-        res.json({
-            id: result.insertId
-        });
+    burger.insertOne(["burger_name"], [req.body.burger_name], function (result) {
+        console.log(result);
+      res.status(200).end();
     });
 });
 
@@ -34,15 +33,5 @@ router.put("/api/burgers/:id", function (req, res) {
     });
 });
 
-// Added delete function  for router// 
-router.delete("/api/burger/:id", function (req, res) {
-     burger.deleteOne({ delete: 1 }, { id: req.params.id }, function (result) {
-        if (result.affectedRows == 0) {
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
-        }
-    });
-});
 
 module.exports = router;
