@@ -41,7 +41,7 @@ Check out this video of the app for a run-through of how it works.
 
 ### Submission on BCS
 
+Heroku Deployed Link: https://damp-temple-44081.herokuapp.com/ 
 
-This assignment must be deployed. * Please submit both the deployed Heroku link to your homework AND the link to the Github Repository!
 
 
