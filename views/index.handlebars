@@ -1,20 +1,20 @@
 
 <div class="container">
     <div class="jumbotron bg-success text-center ">
-        <h1>Eat-A-Burger!</h1>
+        <h1>Eat-A-Burger</h1>
     </div>
     <div class="row">
         <div class="col-sm-12 m-auto">
             <div class="row">
                 <div class="col-sm-6">
                     <div class="card">
-                        <div class="card-header alert-success text-center">
+                        <div class="card-header alert-success text-center text-dark">
                             Available Burgers:
                         </div>
                         <ol>
                         {{#each burgers}}
                             {{#unless devoured}}
-                                <li>{{burger_name}} <button type="submit" class="btn btn-danger btn-sm devourBtn" data-id="{{id}}">Devour It!</button></li>
+                                <li>{{burger_name}} <button type="submit" id ="devourBtn" class="btn btn-danger btn-sm devourBtn" data-id="{{id}}">Devour It!</button></li>
                             {{/unless}}
                         {{/each}}
                         </ol>
@@ -22,8 +22,10 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="card">
-                        <div class="card-header alert-success text-center">
-                            Devoured Burgers:
+                        <div class="card-header alert-success text-center text-dark">
+                    
+                            These have been devoured:
+                          
                         </div>
                         <ol>
                         {{#each burgers}}
